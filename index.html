@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>zyy</title>
+</head>
+<body>
+    <a href="#home">主页</a>
+    <a href="#about">关于</a>
+    <div id="content"></div>
+
+    <script>
+        function router() {
+            var route = window.location.hash.substr(1);
+            var contentDiv = document.getElementById('content');
+
+            if(route == 'home') {
+                contentDiv.innerHTML = '<h1>欢迎来到主页！</h1>';
+            } else if(route == 'about') {
+                contentDiv.innerHTML = '<h1>这是关于页面。</h1>';
+            } else {
+                contentDiv.innerHTML = '<h1>欢迎来到我的网站！</h1>';
+            }
+        }
+
+        window.onhashchange = router;
+        window.onload = router;
+    </script>
+</body>
+</html>
