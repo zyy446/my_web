@@ -1,0 +1,5 @@
+#查看暂存区
+git diff --cached --name-only
+
+#查看未推送
+git log origin/master..HEAD
