@@ -87,3 +87,91 @@
 .text div {
     margin-bottom: 6px;
 }
+
+#v1 {
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+    /*加滤镜*/
+    /*filter: blur(15px); //背景模糊设置 */
+    /*-webkit-filter: grayscale(100%);*/
+    /*filter:grayscale(100%); //背景灰度设置*/
+    z-index: -11
+}
+
+.covervid-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.nav {
+    width: 1200px;
+    height: 80px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 5px 20px rgba(37, 13, 13, 0.5);
+    border-radius: 10px;
+}
+
+.nav ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    right: 5%;
+    list-style-type: none;
+}
+
+.nav ul .nav-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc((100% / 4)*1);
+    height: 10px;
+    border-radius: 3px;
+    transition: .5s;
+}
+
+.nav ul li {
+    width: 100%;
+    text-align: center;
+}
+
+.nav ul li a {
+    color: rgb(233, 68, 205);
+    font: 100 30px;
+    font-size: 40px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 70px;
+    text-decoration: none;
+}
+
+.nav ul li:nth-child(1):hover~.nav-box {
+    left: calc(100% / 4 *0);
+    background-color: rgb(238, 152, 209);
+}
+
+.nav ul li:nth-child(2):hover~.nav-box {
+    left: calc(100% / 4 *1);
+    background-color: rgb(240, 248, 126);
+}
+
+.nav ul li:nth-child(3):hover~.nav-box {
+    left: calc(100% / 4 *2);
+    background-color: rgb(225, 201, 245);
+}
+
+.nav ul li:nth-child(4):hover~.nav-box {
+    left: calc(100% / 4 *3);
+    background-color: rgb(121, 250, 211);
+}
