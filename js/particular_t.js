@@ -1,13 +1,15 @@
 (function () {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
+    ctx.fillStyle = "red";
+    ctx.fillRect(50, 50, 100, 100);
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const particleNum = 75;
-    const lineDistance = 180;
-    const colorRGB = '125, 125, 125';
+    const particleNum = (window.outerHeight * window.outerWidth) / 20000;
+    const lineDistance = (window.outerHeight * window.outerWidth) / 5500;
+    // const colorRGB = '125, 125, 125';
     let particles = [];
     let interactionParticle = null;
 
@@ -46,7 +48,7 @@
 
     function createParticles() {
         for (let i = 0; i < particleNum; i++) {
-            let size = getRandomArbitrary(3, 2);
+            let size = getRandomArbitrary(3, 3);
             let x = Math.random() * canvas.width;
             let y = Math.random() * canvas.height;
             let velocityX = getRandomArbitrary(-1, 1);
@@ -56,8 +58,8 @@
         }
     }
 
-    function calculate() {
-        return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
+    function calculate(x1, x2, y1, y2) {
+        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
     }
 
     function connect() {
@@ -65,7 +67,7 @@
             for (let j = i + 1; j < particles.length; j++) {
                 const p1 = particles[i];
                 const p2 = particles[j];
-                let distance = Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
+                let distance = calculate(p1.x, p2.x, p1.y, p2.y);
                 if (distance < lineDistance) {
                     ctx.beginPath();
                     var opacity = 1 - distance / lineDistance;
@@ -95,18 +97,56 @@
                 particles.push(interactionParticle);
             }
         });
+        canvas.addEventListener('onmouseover', e => {
+            interactionParticle.x = e.x;
+            interactionParticle.y = e.y;
+            for (let i = 0; i < particles.length - 1; i++) {
+                p1_x = particles[i].x;
+                p1_y = particles[i].y;
+                p2_x = interactionParticle.x;
+                p2_y = interactionParticle.y;
+                let distance = calculate(p1_x, p2_x, p1_y, p2_y);
+                if (distance < lineDistance && distance > lineDistance - 10) {
+                    particles[i].velocityX = (p2_x - p1_x) / (lineDistance - 20);
+                    particles[i].velocityY = (p2_y - p1_y) / (lineDistance - 20);
+                    if (distance < lineDistance - 10) {
+                        particles[i].velocityX *= -1;
+                        particles[i].velocityY *= -1;
+                    }
+                }
+            }
+        });
         canvas.addEventListener('mousemove', e => {
             interactionParticle.x = e.x;
             interactionParticle.y = e.y;
+            for (let i = 0; i < particles.length - 1; i++) {
+                p1_x = particles[i].x;
+                p1_y = particles[i].y;
+                p2_x = interactionParticle.x;
+                p2_y = interactionParticle.y;
+                let distance = calculate(p1_x, p2_x, p1_y, p2_y);
+                if (distance < lineDistance - 20) {
+                    particles[i].velocityX = ((p2_x - p1_x) / (lineDistance - 20)) * getRandomArbitrary(0, 1);
+                    particles[i].velocityY = ((p2_y - p1_y) / (lineDistance - 20)) * getRandomArbitrary(0, 1);
+                }
+                if (distance > lineDistance - 20 && distance < lineDistance) {
+                    particles[i].velocityX = getRandomArbitrary(-1, 1);
+                    particles[i].velocityY = getRandomArbitrary(-1, 1);
+                }
+            }
         });
 
         canvas.addEventListener('mouseout', e => {
             interactionParticle.x = null;
             interactionParticle.y = null;
-
         });
     }
 
+    function cir() {
+
+    }
+
+    cir();
     bindEvents();
     createParticles();
     animate();
