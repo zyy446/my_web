@@ -2,24 +2,17 @@
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
-<<<<<<< HEAD
     box-sizing: border-box;
-=======
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c
 }
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
     background: transparent;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-=======
-    background: #78c5f1;
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c
 }
 
 #my {
@@ -30,20 +23,12 @@ body {
     height: 1000px;
     opacity: 0.85;
     align-items: center;
-<<<<<<< HEAD
     background: transparent;
-=======
-    background: #bee6d6;
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c
     flex-wrap: wrap;
     padding: 30px;
 }
 
-<<<<<<< HEAD
 .container .card {
-=======
-.containter .card {
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c
     max-width: 310px;
     position: relative;
     height: 215px;
@@ -53,7 +38,6 @@ body {
     display: flex;
     flex-direction: column;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-<<<<<<< HEAD
     transition: 0.3s ease-in-out;
 }
 
@@ -62,16 +46,6 @@ body {
 }
 
 .container .card .imgBX {
-=======
-    transition: 0.3s ease-in-out
-}
-
-.containter .card hover {
-    height: 410px;
-}
-
-.containter .card .imgBX {
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c
     position: relative;
     width: 260px;
     height: 260px;
@@ -79,25 +53,14 @@ body {
     left: 20px;
     z-index: 1;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-<<<<<<< HEAD
 }
 
 .container .card .imgBX img {
-=======
-
-}
-
-.containter .card .imgBX img {
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c
     max-width: 100%;
     border-radius: 4px;
 }
 
-<<<<<<< HEAD
 .container .card .content {
-=======
-.containter .card .content {
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c
     position: relative;
     margin-top: -140px;
     padding: 20px 15px;
@@ -106,21 +69,13 @@ body {
     visibility: hidden;
     opacity: 0;
     transition: 0.3s ease-in-out;
-<<<<<<< HEAD
 }
 
 .container .card:hover .content {
-=======
-
-}
-
-.containter .card:hover .content {
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c
     visibility: visible;
     opacity: 1;
     margin-top: -30px;
     transition-delay: 0.3s;
-<<<<<<< HEAD
 }
 
 /* ✅ 3D Carousel 核心部分 */
@@ -210,6 +165,3 @@ body {
 .carousel-button.add:hover {
     background-color: rgba(0, 128, 0, 0.8);
 } */
-=======
-}
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c

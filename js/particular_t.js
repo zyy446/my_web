@@ -1,16 +1,10 @@
 (function () {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-<<<<<<< HEAD
-=======
-    ctx.fillStyle = "red";
-    ctx.fillRect(50, 50, 100, 100);
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-<<<<<<< HEAD
     const particleNum = Math.floor((canvas.width * canvas.height) / 30000);
     const lineDistance = 150;
     const particles = [];
@@ -19,14 +13,6 @@
     // 吸引模式：true=吸引，false=排斥
     let attractMode = true;
 
-=======
-    const particleNum = (window.outerHeight * window.outerWidth) / 20000;
-    const lineDistance = (window.outerHeight * window.outerWidth) / 5500;
-    // const colorRGB = '125, 125, 125';
-    let particles = [];
-    let interactionParticle = null;
-
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c
     class Particle {
         constructor(x, y, velocityX, velocityY, size, color) {
             this.x = x;
@@ -36,33 +22,18 @@
             this.size = size;
             this.color = color;
         }
-<<<<<<< HEAD
 
-=======
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fillStyle = this.color;
             ctx.fill();
-<<<<<<< HEAD
         }
 
         update() {
             if (this.x <= 0 || this.x >= canvas.width) this.velocityX *= -1;
             if (this.y <= 0 || this.y >= canvas.height) this.velocityY *= -1;
 
-=======
-
-        }
-        update() {
-            if (this.x < 0 || this.x > canvas.width) {
-                this.velocityX *= -1;
-            }
-            if (this.y < 0 || this.y > canvas.height) {
-                this.velocityY *= -1;
-            }
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c
             this.x += this.velocityX;
             this.y += this.velocityY;
             this.draw();
@@ -75,56 +46,30 @@
 
     function createParticles() {
         for (let i = 0; i < particleNum; i++) {
-<<<<<<< HEAD
             const size = getRandomArbitrary(2, 4);
             const x = Math.random() * canvas.width;
             const y = Math.random() * canvas.height;
             const velocityX = getRandomArbitrary(-0.5, 0.5);
             const velocityY = getRandomArbitrary(-0.5, 0.5);
             const color = 'rgba(0,125,125,0.667)';
-=======
-            let size = getRandomArbitrary(3, 3);
-            let x = Math.random() * canvas.width;
-            let y = Math.random() * canvas.height;
-            let velocityX = getRandomArbitrary(-1, 1);
-            let velocityY = getRandomArbitrary(-1, 1);
-            let color = 'rgba(0,125,125,0.667)';
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c
             particles.push(new Particle(x, y, velocityX, velocityY, size, color));
         }
     }
 
-<<<<<<< HEAD
     function calculateDistance(p1, p2) {
         return Math.hypot(p1.x - p2.x, p1.y - p2.y);
     }
 
     function connectParticles() {
-=======
-    function calculate(x1, x2, y1, y2) {
-        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-    }
-
-    function connect() {
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const p1 = particles[i];
                 const p2 = particles[j];
-<<<<<<< HEAD
                 const distance = calculateDistance(p1, p2);
                 if (distance < lineDistance) {
                     ctx.beginPath();
                     ctx.strokeStyle = `rgba(0,125,125,${1 - distance / lineDistance})`;
                     ctx.lineWidth = 0.8;
-=======
-                let distance = calculate(p1.x, p2.x, p1.y, p2.y);
-                if (distance < lineDistance) {
-                    ctx.beginPath();
-                    var opacity = 1 - distance / lineDistance;
-                    ctx.globalAlpha = opacity;
-                    ctx.lineWidth = .8;
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c
                     ctx.moveTo(p1.x, p1.y);
                     ctx.lineTo(p2.x, p2.y);
                     ctx.stroke();
@@ -133,7 +78,6 @@
         }
     }
 
-<<<<<<< HEAD
     function applyInteraction() {
         if (!interactionParticle) return;
 
@@ -326,75 +270,3 @@
 })();
 
 
-=======
-    function animate() {
-        requestAnimationFrame(animate);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(particle => {
-            particle.update();
-        });
-        connect();
-    }
-
-    function bindEvents() {
-        canvas.addEventListener('mouseover', e => {
-            if (!interactionParticle) {
-                interactionParticle = new Particle(e.x, e.y, 0, 0, 2, 'rgba(${colorRGB}, 1)');
-                particles.push(interactionParticle);
-            }
-        });
-        canvas.addEventListener('onmouseover', e => {
-            interactionParticle.x = e.x;
-            interactionParticle.y = e.y;
-            for (let i = 0; i < particles.length - 1; i++) {
-                p1_x = particles[i].x;
-                p1_y = particles[i].y;
-                p2_x = interactionParticle.x;
-                p2_y = interactionParticle.y;
-                let distance = calculate(p1_x, p2_x, p1_y, p2_y);
-                if (distance < lineDistance && distance > lineDistance - 10) {
-                    particles[i].velocityX = (p2_x - p1_x) / (lineDistance - 20);
-                    particles[i].velocityY = (p2_y - p1_y) / (lineDistance - 20);
-                    if (distance < lineDistance - 10) {
-                        particles[i].velocityX *= -1;
-                        particles[i].velocityY *= -1;
-                    }
-                }
-            }
-        });
-        canvas.addEventListener('mousemove', e => {
-            interactionParticle.x = e.x;
-            interactionParticle.y = e.y;
-            for (let i = 0; i < particles.length - 1; i++) {
-                p1_x = particles[i].x;
-                p1_y = particles[i].y;
-                p2_x = interactionParticle.x;
-                p2_y = interactionParticle.y;
-                let distance = calculate(p1_x, p2_x, p1_y, p2_y);
-                if (distance < lineDistance - 20) {
-                    particles[i].velocityX = ((p2_x - p1_x) / (lineDistance - 20)) * getRandomArbitrary(0, 1);
-                    particles[i].velocityY = ((p2_y - p1_y) / (lineDistance - 20)) * getRandomArbitrary(0, 1);
-                }
-                if (distance > lineDistance - 20 && distance < lineDistance) {
-                    particles[i].velocityX = getRandomArbitrary(-1, 1);
-                    particles[i].velocityY = getRandomArbitrary(-1, 1);
-                }
-            }
-        });
-
-        canvas.addEventListener('mouseout', e => {
-            interactionParticle.x = null;
-            interactionParticle.y = null;
-        });
-    }
-
-    function cir() {
-
-    }
-
-    cir();
-    bindEvents();
-    createParticles();
-    animate();
-}());
->>>>>>> 335838fc9827efe2981472c67d3bf11b22d7e81c
