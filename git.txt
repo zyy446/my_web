@@ -1,0 +1,15 @@
+#查看暂存区
+git diff --cached --name-only
+
+#查看未推送
+git log origin/master..HEAD
+
+#强制移除暂存区某个文件
+ git rm -f --cached ***
+
+#推送
+git commit -m "推送事件的名称"
+
+#提交到master分支
+git push origin master
+

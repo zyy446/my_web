@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- 字符集 -->
+    <meta charset="UTF-8">
+    <title>US</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <meta name="description" content="401官网">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript">
+        (function () {
+            window.onclick = function (event) {
+                var heart = document.createElement("b");
+                heart.onselectstart = new Function('event.returnValue=false');
+                document.body.appendChild(heart).innerHTML = "❤";
+                heart.style.cssText = "position: fixed;left:-100%;";
+                var f = 16, // 字体大小
+                    x = event.clientX - f / 2, // 横坐标
+                    y = event.clientY - f, // 纵坐标
+                    c = randomColor(), // 随机颜色
+                    a = 1, // 透明度
+                    s = 1.2; // 放大缩小
+                var timer = setInterval(function () {
+                    if (a <= 0) {
+                        document.body.removeChild(heart);
+                        clearInterval(timer);
+                    } else {
+                        heart.style.cssText = "font-size:16px;cursor: default;position: fixed;color:" + c + ";left:" + x + "px;top:" + y + "px;opacity:" + a + ";transform:scale(" + s + ");";
+                        y--;
+                        a -= 0.016;
+                        s += 0.002;
+                    }
+                }, 12)
+            }
+            // 随机颜色
+            function randomColor() {
+
+                return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+
+            }
+        }());
+    </script>
+</head>
+
+<body>
+    <!-- CSS -->
+    <!-- <video  id="v1" autoplay loop muted >
+        <source   src="https://wallpaperm-mp4.duba.com/scene/preview_video/97ba6b60662ab4f31ef06cdf5a5f8e94_preview.mp4" />
+    </video> -->
+    <div class="covervid-wrapper">
+        <video id="v1" autoplay loop muted>
+            <source src="./wallpaper/final2.mp4" />
+        </video>
+        <div class="nav">
+            <ul>
+                <li><a href="./all_html/401.html">401</a></li>
+                <li><a href="#2">junior</a></li>
+                <li><a href="#3">Me</a></li>
+                <li><a href="#4">Family</a></li>
+                <div class="nav-box"></div>
+            </ul>
+        </div>
+    </div>
+
+    <!-- <div class="image-title-container">
+        <div class="mid">
+            <h1>原神</h1>   
+        </div>
+    </div> -->
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#my {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 1100px;
+    height: 1000px;
+    opacity: 0.85;
+    align-items: center;
+    background: transparent;
+    flex-wrap: wrap;
+    padding: 30px;
+}
+
+.container .card {
+    max-width: 310px;
+    position: relative;
+    height: 215px;
+    background: #fff;
+    margin: 30px 10px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease-in-out;
+}
+
+.container .card hover {
+    height: 410px;
+}
+
+.container .card .imgBX {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    top: -60px;
+    left: 20px;
+    z-index: 1;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.container .card .imgBX img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+.container .card .content {
+    position: relative;
+    margin-top: -140px;
+    padding: 20px 15px;
+    text-align: center;
+    color: #000000;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.container .card:hover .content {
+    visibility: visible;
+    opacity: 1;
+    margin-top: -30px;
+    transition-delay: 0.3s;
+}
+
+/* ✅ 3D Carousel 核心部分 */
+
+.carousel-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 60vh;
+    overflow: hidden;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20vw;
+    max-width: 500px;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+    transition: all 0.8s ease;
+    z-index: 0;
+    transition: transform 1.5s ease;
+    /* ✅ 添加放大过渡 */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease;
+    /* 0.8秒过渡放大 */
+}
+
+.carousel-item:hover img {
+    transform: scale(1.8);
+    /* ✅ 放大 1.2 倍，可根据需要修改为1.3, 1.5等 */
+    z-index: 10;
+}
+
+/* 按键 */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    user-select: none;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button.left {
+    left: 10px;
+}
+
+.carousel-button.right {
+    right: 10px;
+}
+
+/* .carousel-button.add {
+    bottom: 10px;
+    top: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 128, 0, 0.5);
+}
+
+.carousel-button.add:hover {
+    background-color: rgba(0, 128, 0, 0.8);
+} */
